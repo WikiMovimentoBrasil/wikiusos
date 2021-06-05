@@ -1,0 +1,366 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+    {% with lang=lang, username=username %}
+        {% include 'topnavbar.html' %}
+    {% endwith %}
+{% endblock %}
+
+{% block title %}{% if metadata.obra_label %}{{ metadata.obra_label[0] }}{% else %}{{ metadata.obra_qid[0] }}
+{% endif %}{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename= 'jquery.zoom.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'owl.carousel.min.css') }}">
+    <script src="{{ url_for('static', filename= 'owl.carousel.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="w3-row">
+        <div id="image" class="w3-container w3-half">
+            {% if category_images|length > 0 %}
+                <div class="owl-carousel owl-theme">
+                    <span class="img_span" style="display: inline-block; position: relative; overflow: hidden;">
+                        <img style="display: block" class="owl-lazy image_item"
+                             alt="{% if metadata.obra_label[0] %}{{ metadata.obra_label[0] }}
+{% else %}{{ metadata.obra_qid[0] }}{% endif %} - {{ category_images[0] }}"
+                             data-src="https://commons.wikimedia.org/wiki/Special:FilePath/
+{{ category_images[0] }}?width=2000px">
+                    </span>
+                    {% for imagem_categoria in category_images[1:] %}
+                        <span class="img_span" style="display: inline-block; position: relative; overflow: hidden;">
+                            <img class="owl-lazy image_item"
+                                 alt="{% if metadata.obra_label[0] %}{{ metadata.obra_label[0] }}
+{% else %}{{ metadata.obra_qid[0] }}{% endif %} - {{ imagem_categoria }}"
+                                 data-src="https://commons.wikimedia.org/wiki/Special:FilePath/
+{{ imagem_categoria }}?width=2000px">
+                        </span>
+                    {% endfor %}
+                </div>
+                <a target="_blank" href="https://commons.wikimedia.org/wiki/{{ metadata.category }}">
+                    {{ _("Veja as imagens desse objeto no Wikimedia Commons") }}
+                </a>
+            {% else %}
+                <div class="owl-carousel owl-theme">
+                    <span class="img_span" style="display: inline-block; position: relative; overflow: hidden;">
+                        <img style="display: block;max-width: 100%" class="owl-lazy image_item"
+                             alt="{% if metadata.obra_label[0] %}{{ metadata.obra_label[0] }}
+{% else %}{{ metadata.obra_qid[0] }}{% endif %}"
+                             data-src="https://commons.wikimedia.org/wiki/Special:FilePath/{{ metadata.imagem[0] }}?width=2000px">
+                    </span>
+                </div>
+                {% if metadata.imagem[0]!="Calaamad suaal.png" %}
+                    <a target="_blank"
+                       href="https://commons.wikimedia.org/wiki/Special:FilePath/{{ metadata.imagem[0] }}">
+                        {{ _("Veja essa imagem no Wikimedia Commons") }}
+                    </a>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div id="metadata" class="w3-container w3-half">
+            {% if not username %}
+                <h2 style="text-align:center">
+                    {{ _("Faça a sua autenticação clicando no botão 'Autenticar-se' no canto superior direito") }}
+                </h2>
+            {% endif %}
+            <table class="table table-responsive table-striped"
+                   style="overflow: hidden; font-size: 125%; width: 100%; table-layout: fixed; overflow-wrap: break-word;">
+                <tr>
+                    <th>{{ _("Objeto") }}</th>
+                    <td><a tabindex="0" target="_blank"
+                           href="https://www.wikidata.org/wiki/{{ metadata.obra_qid[0] }}">{{ metadata.obra_label[0] }}</a>
+                    </td>
+                </tr>
+                {% if metadata.instancia %}
+                    <tr>
+                        <th>{{ _("Instância de") }}</th>
+                        <td>
+                            {% for elem in metadata.instancia %}
+                                {% set elem_parts = elem.split('@') %}
+                                <a tabindex="0" target="_blank"
+                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>
+                                {{ ";" if not loop.last }}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% if metadata.colecao %}
+                    <tr>
+                        <th>{{ _("Coleção") }}</th>
+                        <td>
+                            {% for elem in metadata.colecao %}
+                                {% set elem_parts = elem.split('@') %}
+                                <a tabindex="0" target="_blank"
+                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>
+                                {{ ";" if not loop.last }}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% if metadata.numero_de_inventario %}
+                    <tr>
+                        <th>{{ _("Número de inventário") }}</th>
+                        <td>
+                            {% for elem in metadata.numero_de_inventario %}
+                                {{ elem }}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% if metadata.data %}
+                    <tr>
+                        <th>{{ _("Data") }}</th>
+                        <td>
+                            {% for elem in metadata.data %}{{ elem }}{{ ";" if not loop.last }}{% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% if metadata.criador %}
+                    <tr>
+                        <th>{{ _("Criador(a)") }}</th>
+                        <td>
+                            {% for elem in metadata.criador %}
+                                {% set elem_parts = elem.split('@') %}
+                                <a tabindex="0" target="_blank"
+                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>
+                                {{ ";" if not loop.last }}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% if metadata.material %}
+                    <tr>
+                        <th>{{ _("Material") }}</th>
+                        <td>
+                            {% for elem in metadata.material %}
+                                {% set elem_parts = elem.split('@') %}
+                                <a tabindex="0" target="_blank"
+                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>
+                                {{ ";" if not loop.last }}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% if metadata.altura and metadata.largura %}
+                    <tr>
+                        <th>{{ _("Dimensões") }}</th>
+                        <td>
+                            {% set elem_parts_altura = metadata.altura[0].split('@') %}
+                            {% set elem_parts_largura = metadata.largura[0].split('@') %}
+                            {{ elem_parts_altura[0] }} {{ elem_parts_altura[1] }}
+                            &times; {{ elem_parts_largura[0] }} {{ elem_parts_largura[1] }}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% if metadata.metodo %}
+                    <tr>
+                        <th>{{ _("Método de fabricação") }}</th>
+                        <td>
+                            {% for elem in metadata.metodo %}
+                                {% set elem_parts = elem.split('@') %}
+                                <a tabindex="0" target="_blank"
+                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>
+                                {{ ";" if not loop.last }}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+                {% if metadata.audio %}
+                    <tr>
+                        <th>{{ _("Versão audível") }}</th>
+                        <td>
+                            <audio controls>
+                                <source src="https://commons.wikimedia.org/wiki/Special:FilePath/{{ metadata.audio[0] }}"
+                                        type="audio/ogg">
+                                {{ _("Seu navegador não suporta este elemento de áudio") }}
+                            </audio>
+                        </td>
+                    </tr>
+                {% endif %}
+            </table>
+            <div class="w3-container">
+                <h2>
+                    {{ _("Caso você possua um exemplar do mesmo objeto, adicione imagens e descreva onde ele é usado.") }}
+                </h2>
+                <a class="button" title="{{ _('Enviar imagens') }}">
+                    <button type="button" class="button" data-toggle="modal"
+                            data-qid="{{ metadata.obra_qid[0] }}" data-target="#sendModal"
+                            style="background-color:#008000;margin: 0; width:100%">{{ _("ADICIONAR") }}</button>
+                </a>
+            </div>
+            <div id="back" class="w3-container" style="justify-content: center;">
+                <a class="button" tabindex="0" href="{{ url_for('inicio') }}">
+                    <button type="button" class="button" id="back"
+                            style="background-color:#D04125;width:100%;margin:0">
+                        {{ _("VOLTAR À PÁGINA INICIAL") }}
+                    </button>
+                </a>
+            </div>{% if next_qid %}
+            <div id="next" class="w3-container" style="justify-content: center;">
+                <a class="button" tabindex="0" href="{{ url_for('item', qid=next_qid) }}">
+                    <button type="button" class="button" id="next"
+                            style="background-color:#4D4D4D;width:100%;margin:0;color:white">
+                        {{ _("PULAR ESTE ITEM") }}
+                    </button>
+                </a>
+            </div>{% endif %}
+        </div>
+    </div>
+    <div class="w3-container">
+        <div class="modal" id="sendModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">{{ _("Enviar imagens") }}</h3>
+                        <button type="button" class="close" data-dismiss="modal" style="font-size:125%; ">&times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p style="font-size: 115%">
+                            {{ _("Se você possui um exemplar do mesmo objeto que <i>%(label)s</i>, preencha o formulário abaixo, anexe uma fotografia do seu exemplar do objeto e envie.",label=metadata.obra_label[0]) }}
+                        </p>
+                        <div class="w3-container"
+                             style="overflow: hidden; font-size: 115%; width: 100%; overflow-wrap: break-word; padding:0.1em">
+                            <form id="send_image_form" method="post" enctype="multipart/form-data"> {# action="{{ url_for("item", qid=qid) }}" #}
+                                <input name="qid" type="hidden" value="{{ qid }}" required>
+                                <input name="label" type="hidden" value="{{ metadata.obra_label[0] }}" required>
+                                <input name="lang" type="hidden" value="{{ lang }}" required>
+                                <div class="w3-container w3-row"
+                                     style="padding:0.1em; background-color: rgba(0,0,0,.05)">
+                                    <div class="w3-container w3-quarter"
+                                         style="padding:0;font-weight: bold">{{ _("Usuário(a)") }}
+                                        <a href="#" style="font-size: 60%" data-toggle="popover" data-trigger="focus"
+                                           data-content="{{ _("Seu nome de usuário(a)") }}">&#9432;</a>
+                                    </div>
+                                    <div class="w3-container w3-threequarter" style="padding:0">
+                                        <select id="username" name="username" disabled style="background-color: #ffffff"
+                                                required>
+                                            <option value="{{ username }}" selected="selected">{{ username }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="w3-container w3-row" style="padding:0.1em">
+                                    <div class="w3-container w3-quarter"
+                                         style="padding:0;font-weight: bold">{{ _("Licença") }}
+                                        <a href="#" style="font-size: 60%" data-toggle="popover" data-trigger="focus"
+                                           data-content="{{ _("Escolha a licença livre que deseja carregar sua fotografia. Leia mais sobre as licenças <a target='_blank' href='https://commons.wikimedia.org/wiki/Commons:Licensing/pt-br'>aqui</a>.") }}">&#9432;</a>
+                                    </div>
+                                    <div class="w3-container w3-threequarter" style="padding:0">
+                                        <select id="license" name="license" style="width:100%;" required>
+                                            <option selected="selected" value="ccbysa4">Creative Commons Attribution
+                                                ShareAlike 4.0
+                                            </option>
+                                            <option value="ccbysa3">Creative Commons Attribution ShareAlike 3.0
+                                            </option>
+                                            <option value="ccby4">Creative Commons Attribution 4.0</option>
+                                            <option value="ccby3">Creative Commons Attribution 3.0</option>
+                                            <option value="cc0">Creative Commons CC0 Renúncia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="w3-container w3-row"
+                                     style="padding:0.1em; background-color: rgba(0,0,0,.05)">
+                                    <div class="w3-container w3-quarter"
+                                         style="padding:0;font-weight: bold">{{ _("Data:") }}
+                                        <a href="#" style="font-size: 60%" data-toggle="popover" data-trigger="focus"
+                                           data-content="{{ _("Data em que a fotografia foi tirada") }}">&#9432;</a>
+                                    </div>
+                                    <div class="w3-container w3-threequarter" style="padding:0">
+                                        <input name="date" type="date" required>
+                                    </div>
+                                </div>
+                                <div class="w3-container w3-row" style="padding:0.1em">
+                                    <div class="w3-container w3-quarter"
+                                         style="padding:0;font-weight: bold">{{ _("Título da imagem:") }}
+                                        <a href="#" style="font-size: 60%" data-toggle="popover" data-trigger="focus"
+                                           data-content="{{ _("Título da imagem. Evite termos genéricos ou nomes ilegíveis por humanos") }}">&#9432;</a>
+                                    </div>
+                                    <div class="w3-container w3-threequarter" style="padding:0">
+                                        <input name="title" type="text" style="width:100%;" required>
+                                    </div>
+                                </div>
+                                <div class="w3-container w3-row"
+                                     style="padding:0.1em; background-color: rgba(0,0,0,.05)">
+                                    <div class="w3-container w3-quarter"
+                                         style="padding:0;font-weight: bold">{{ _("Descrição da imagem:") }}
+                                        <a href="#" style="font-size: 60%" data-toggle="popover" data-trigger="focus"
+                                           data-content="{{ _("Descreva onde e como o objeto é usado") }}">&#9432;</a>
+                                    </div>
+                                    <div class="w3-container w3-threequarter" style="padding:0">
+                                        <textarea name="description" rows="5" style="width:100%;" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="w3-container w3-row" style="padding:0.1em">
+                                    <div class="w3-container w3-quarter"
+                                         style="padding:0;font-weight: bold">{{ _("Arquivo:") }}
+                                        <a href="#" style="font-size: 60%" data-toggle="popover" data-trigger="focus"
+                                           data-content="{{ _("Descreva onde e como o objeto é usado") }}">&#9432;</a>
+                                    </div>
+                                    <div class="w3-container w3-threequarter" style="padding:0">
+                                        <input name="file" type="file" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                style="font-size:125%; ">{{ _("Cancelar") }}</button>
+                        <button type="submit" form="send_image_form" id="sendimage" class="btn btn-primary"
+                                style="font-size:125%; background-color: #008000">{{ _("Enviar imagem") }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#sendModal').on('hidden.bs.modal', function () {
+            document.getElementById("send_image_form").reset();
+        });
+
+        $("#send_image_form").submit(function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            var error = "{{ _('Ocorreu algum erro! Verifique o formulário e tente novamente. Caso o erro persista, por favor, reporte em https://github.com/WikiMovimentoBrasil/wikiusos/issues') }}";
+
+            $.ajax({
+                url: "/send_file",
+                type: "POST",
+                data: formData,
+                success: function (response) {
+                    alert(response)
+                },
+                error: function () {
+                    alert(error)
+                },
+                cache: false,
+                contentType: false,
+                processData: false});
+        });
+
+        $(document).ready(function () {
+            $('.owl-item.active .owl-lazy.image_item')
+                .parent()
+                .zoom();
+        })
+
+        $('.owl-lazy.image_item').hover(function () {
+            $(this)
+                .parent()
+                .zoom();
+        })
+
+        $('.owl-carousel').owlCarousel({
+            items: 1,
+            lazyLoad: true,
+            loop: true,
+            margin: 10,
+            nav: true,
+            navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>']
+        });
+
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover({html: true});
+        });
+    </script>
+{% endblock %}
