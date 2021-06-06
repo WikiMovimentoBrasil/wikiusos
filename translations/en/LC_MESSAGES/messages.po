@@ -252,8 +252,6 @@ msgstr ""
 
 #: templates/inicio.html:42
 msgid "Roupas"
-msgstr ""#: templates/inicio.html:42
-msgid "Roupas"
 msgstr "Clothes"
 
 #: templates/inicio.html:49
