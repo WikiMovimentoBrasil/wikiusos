@@ -87,7 +87,7 @@ def upload_file(file, filename, form, username):
 
 
 def build_text(form, username):
-    test = ("=={{int:filedesc}}==\n"
+    text = ("=={{int:filedesc}}==\n"
             "{{Information\n"
             "|description={{"+form["lang"]+"|1="+form["description"]+"}}\n"
             "|date="+form["date"]+"\n"
@@ -98,7 +98,7 @@ def build_text(form, username):
             "{{Wikiusos}}\n"
             "{{"+get_license(form["license"])+"}}\n\n"
             "[[Category:Uploaded with wikiusos|"+form["qid"]+"]]")
-    return test
+    return text
 
 
 def get_license(license_):
