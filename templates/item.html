@@ -178,16 +178,18 @@
                     </tr>
                 {% endif %}
             </table>
-            <div class="w3-container">
-                <h2>
-                    {{ _("Caso você possua um exemplar do mesmo objeto, adicione imagens e descreva onde ele é usado.") }}
-                </h2>
-                <a class="button" title="{{ _('Enviar imagens') }}">
-                    <button type="button" class="button" data-toggle="modal"
-                            data-qid="{{ metadata.obra_qid[0] }}" data-target="#sendModal"
-                            style="background-color:#008000;margin: 0; width:100%">{{ _("ADICIONAR") }}</button>
-                </a>
-            </div>
+            {% if username %}
+                <div class="w3-container">
+                    <h2>
+                        {{ _("Caso você possua um exemplar do mesmo objeto, adicione imagens e descreva onde ele é usado.") }}
+                    </h2>
+                    <a class="button" title="{{ _('Enviar imagens') }}">
+                        <button type="button" class="button" data-toggle="modal"
+                                data-qid="{{ metadata.obra_qid[0] }}" data-target="#sendModal"
+                                style="background-color:#008000;margin: 0; width:100%">{{ _("ADICIONAR") }}</button>
+                    </a>
+                </div>
+            {% endif %}
             <div id="back" class="w3-container" style="justify-content: center;">
                 <a class="button" tabindex="0" href="{{ url_for('inicio') }}">
                     <button type="button" class="button" id="back"
@@ -206,119 +208,131 @@
             </div>{% endif %}
         </div>
     </div>
-    <div class="w3-container">
-        <div class="modal" id="sendModal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">{{ _("Enviar imagens") }}</h3>
-                        <button type="button" class="close" data-dismiss="modal" style="font-size:125%; ">&times;
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p style="font-size: 115%">
-                            {{ _("Se você possui um exemplar do mesmo objeto que <i>%(label)s</i>, preencha o formulário abaixo, anexe uma fotografia do seu exemplar do objeto e envie.",label=metadata.obra_label[0]) }}
-                        </p>
-                        <div class="w3-container"
-                             style="overflow: hidden; font-size: 115%; width: 100%; overflow-wrap: break-word; padding:0.1em">
-                            <form id="send_image_form" method="post" enctype="multipart/form-data"> {# action="{{ url_for("item", qid=qid) }}" #}
-                                <input name="qid" type="hidden" value="{{ qid }}" required>
-                                <input name="label" type="hidden" value="{{ metadata.obra_label[0] }}" required>
-                                <input name="lang" type="hidden" value="{{ lang }}" required>
-                                <div class="w3-container w3-row"
-                                     style="padding:0.1em; background-color: rgba(0,0,0,.05)">
-                                    <div class="w3-container w3-quarter"
-                                         style="padding:0;font-weight: bold">{{ _("Usuário(a)") }}
-                                        <a href="#" style="font-size: 60%" data-toggle="popover" data-trigger="focus"
-                                           data-content="{{ _("Seu nome de usuário(a)") }}">&#9432;</a>
-                                    </div>
-                                    <div class="w3-container w3-threequarter" style="padding:0">
-                                        <select id="username" name="username" disabled style="background-color: #ffffff"
-                                                required>
-                                            <option value="{{ username }}" selected="selected">{{ username }}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="w3-container w3-row" style="padding:0.1em">
-                                    <div class="w3-container w3-quarter"
-                                         style="padding:0;font-weight: bold">{{ _("Licença") }}
-                                        <a href="#" style="font-size: 60%" data-toggle="popover" data-trigger="focus"
-                                           data-content="{{ _("Escolha a licença livre que deseja carregar sua fotografia. Leia mais sobre as licenças <a target='_blank' href='https://commons.wikimedia.org/wiki/Commons:Licensing/pt-br'>aqui</a>.") }}">&#9432;</a>
-                                    </div>
-                                    <div class="w3-container w3-threequarter" style="padding:0">
-                                        <select id="license" name="license" style="width:100%;" required>
-                                            <option selected="selected" value="ccbysa4">Creative Commons Attribution
-                                                ShareAlike 4.0
-                                            </option>
-                                            <option value="ccbysa3">Creative Commons Attribution ShareAlike 3.0
-                                            </option>
-                                            <option value="ccby4">Creative Commons Attribution 4.0</option>
-                                            <option value="ccby3">Creative Commons Attribution 3.0</option>
-                                            <option value="cc0">Creative Commons CC0 Renúncia</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="w3-container w3-row"
-                                     style="padding:0.1em; background-color: rgba(0,0,0,.05)">
-                                    <div class="w3-container w3-quarter"
-                                         style="padding:0;font-weight: bold">{{ _("Data:") }}
-                                        <a href="#" style="font-size: 60%" data-toggle="popover" data-trigger="focus"
-                                           data-content="{{ _("Data em que a fotografia foi tirada") }}">&#9432;</a>
-                                    </div>
-                                    <div class="w3-container w3-threequarter" style="padding:0">
-                                        <input name="date" type="date" required>
-                                    </div>
-                                </div>
-                                <div class="w3-container w3-row" style="padding:0.1em">
-                                    <div class="w3-container w3-quarter"
-                                         style="padding:0;font-weight: bold">{{ _("Título da imagem:") }}
-                                        <a href="#" style="font-size: 60%" data-toggle="popover" data-trigger="focus"
-                                           data-content="{{ _("Título da imagem. Evite termos genéricos ou nomes ilegíveis por humanos") }}">&#9432;</a>
-                                    </div>
-                                    <div class="w3-container w3-threequarter" style="padding:0">
-                                        <input name="title" type="text" style="width:100%;" required>
-                                    </div>
-                                </div>
-                                <div class="w3-container w3-row"
-                                     style="padding:0.1em; background-color: rgba(0,0,0,.05)">
-                                    <div class="w3-container w3-quarter"
-                                         style="padding:0;font-weight: bold">{{ _("Descrição da imagem:") }}
-                                        <a href="#" style="font-size: 60%" data-toggle="popover" data-trigger="focus"
-                                           data-content="{{ _("Descreva onde e como o objeto é usado") }}">&#9432;</a>
-                                    </div>
-                                    <div class="w3-container w3-threequarter" style="padding:0">
-                                        <textarea name="description" rows="5" style="width:100%;" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="w3-container w3-row" style="padding:0.1em">
-                                    <div class="w3-container w3-quarter"
-                                         style="padding:0;font-weight: bold">{{ _("Arquivo:") }}
-                                        <a href="#" style="font-size: 60%" data-toggle="popover" data-trigger="focus"
-                                           data-content="{{ _("Descreva onde e como o objeto é usado") }}">&#9432;</a>
-                                    </div>
-                                    <div class="w3-container w3-threequarter" style="padding:0">
-                                        <input name="file" type="file" required>
-                                    </div>
-                                </div>
-                            </form>
+    {% if username %}
+        <div class="w3-container">
+            <div class="modal" id="sendModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">{{ _("Enviar imagens") }}</h3>
+                            <button type="button" class="close" data-dismiss="modal" style="font-size:125%; ">&times;
+                            </button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                style="font-size:125%; ">{{ _("Cancelar") }}</button>
-                        <button type="submit" form="send_image_form" id="sendimage" class="btn btn-primary"
-                                style="font-size:125%; background-color: #008000">{{ _("Enviar imagem") }}</button>
+                        <div class="modal-body">
+                            <p style="font-size: 115%">
+                                {{ _("Se você possui um exemplar do mesmo objeto que <i>%(label)s</i>, preencha o formulário abaixo, anexe uma fotografia do seu exemplar do objeto e envie.",label=metadata.obra_label[0]) }}
+                            </p>
+                            <div class="w3-container"
+                                 style="overflow: hidden; font-size: 115%; width: 100%; overflow-wrap: break-word; padding:0.1em">
+                                <form id="send_image_form" method="post" enctype="multipart/form-data">
+                                    {# action="{{ url_for("item", qid=qid) }}" #}
+                                    <input name="qid" type="hidden" value="{{ qid }}" required>
+                                    <input name="label" type="hidden" value="{{ metadata.obra_label[0] }}" required>
+                                    <input name="lang" type="hidden" value="{{ lang }}" required>
+                                    <div class="w3-container w3-row"
+                                         style="padding:0.1em; background-color: rgba(0,0,0,.05)">
+                                        <div class="w3-container w3-quarter"
+                                             style="padding:0;font-weight: bold">{{ _("Usuário(a)") }}
+                                            <a href="#" style="font-size: 60%" data-toggle="popover"
+                                               data-trigger="focus"
+                                               data-content="{{ _("Seu nome de usuário(a)") }}">&#9432;</a>
+                                        </div>
+                                        <div class="w3-container w3-threequarter" style="padding:0">
+                                            <select id="username" name="username" disabled
+                                                    style="background-color: #ffffff"
+                                                    required>
+                                                <option value="{{ username }}"
+                                                        selected="selected">{{ username }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="w3-container w3-row" style="padding:0.1em">
+                                        <div class="w3-container w3-quarter"
+                                             style="padding:0;font-weight: bold">{{ _("Licença") }}
+                                            <a href="#" style="font-size: 60%" data-toggle="popover"
+                                               data-trigger="focus"
+                                               data-content="{{ _("Escolha a licença livre que deseja carregar sua fotografia. Leia mais sobre as licenças <a target='_blank' href='https://commons.wikimedia.org/wiki/Commons:Licensing/pt-br'>aqui</a>.") }}">&#9432;</a>
+                                        </div>
+                                        <div class="w3-container w3-threequarter" style="padding:0">
+                                            <select id="license" name="license" style="width:100%;" required>
+                                                <option selected="selected" value="ccbysa4">Creative Commons Attribution
+                                                    ShareAlike 4.0
+                                                </option>
+                                                <option value="ccbysa3">Creative Commons Attribution ShareAlike 3.0
+                                                </option>
+                                                <option value="ccby4">Creative Commons Attribution 4.0</option>
+                                                <option value="ccby3">Creative Commons Attribution 3.0</option>
+                                                <option value="cc0">Creative Commons CC0 Renúncia</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="w3-container w3-row"
+                                         style="padding:0.1em; background-color: rgba(0,0,0,.05)">
+                                        <div class="w3-container w3-quarter"
+                                             style="padding:0;font-weight: bold">{{ _("Data:") }}
+                                            <a href="#" style="font-size: 60%" data-toggle="popover"
+                                               data-trigger="focus"
+                                               data-content="{{ _("Data em que a fotografia foi tirada") }}">&#9432;</a>
+                                        </div>
+                                        <div class="w3-container w3-threequarter" style="padding:0">
+                                            <input name="date" type="date" required>
+                                        </div>
+                                    </div>
+                                    <div class="w3-container w3-row" style="padding:0.1em">
+                                        <div class="w3-container w3-quarter"
+                                             style="padding:0;font-weight: bold">{{ _("Título da imagem:") }}
+                                            <a href="#" style="font-size: 60%" data-toggle="popover"
+                                               data-trigger="focus"
+                                               data-content="{{ _("Título da imagem. Evite termos genéricos ou nomes ilegíveis por humanos") }}">&#9432;</a>
+                                        </div>
+                                        <div class="w3-container w3-threequarter" style="padding:0">
+                                            <input name="title" type="text" style="width:100%;" required>
+                                        </div>
+                                    </div>
+                                    <div class="w3-container w3-row"
+                                         style="padding:0.1em; background-color: rgba(0,0,0,.05)">
+                                        <div class="w3-container w3-quarter"
+                                             style="padding:0;font-weight: bold">{{ _("Descrição da imagem:") }}
+                                            <a href="#" style="font-size: 60%" data-toggle="popover"
+                                               data-trigger="focus"
+                                               data-content="{{ _("Descreva onde e como o objeto é usado") }}">&#9432;</a>
+                                        </div>
+                                        <div class="w3-container w3-threequarter" style="padding:0">
+                                            <textarea name="description" rows="5" style="width:100%;"
+                                                      required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="w3-container w3-row" style="padding:0.1em">
+                                        <div class="w3-container w3-quarter"
+                                             style="padding:0;font-weight: bold">{{ _("Arquivo:") }}
+                                            <a href="#" style="font-size: 60%" data-toggle="popover"
+                                               data-trigger="focus"
+                                               data-content="{{ _("Descreva onde e como o objeto é usado") }}">&#9432;</a>
+                                        </div>
+                                        <div class="w3-container w3-threequarter" style="padding:0">
+                                            <input name="file" type="file" required>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                    style="font-size:125%; ">{{ _("Cancelar") }}</button>
+                            <button type="submit" form="send_image_form" id="sendimage" class="btn btn-primary"
+                                    style="font-size:125%; background-color: #008000">{{ _("Enviar imagem") }}</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    {% endif %}
     <script>
         $('#sendModal').on('hidden.bs.modal', function () {
             document.getElementById("send_image_form").reset();
         });
 
-        $("#send_image_form").submit(function(e) {
+        $("#send_image_form").submit(function (e) {
             e.preventDefault();
             var formData = new FormData(this);
             var error = "{{ _('Ocorreu algum erro! Verifique o formulário e tente novamente. Caso o erro persista, por favor, reporte em https://github.com/WikiMovimentoBrasil/wikiusos/issues') }}";
@@ -335,7 +349,8 @@
                 },
                 cache: false,
                 contentType: false,
-                processData: false});
+                processData: false
+            });
         });
 
         $(document).ready(function () {
