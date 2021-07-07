@@ -103,7 +103,7 @@ def api_category_members(category):
     category_images = []
     if "query" in data and "pages" in data["query"]:
         for page in data["query"]["pages"]:
-            category_images.append(data["query"]["pages"][page]["title"][5:])
+            category_images.append(ur.quote(data["query"]["pages"][page]["title"][5:]))
 
     return category_images
 
