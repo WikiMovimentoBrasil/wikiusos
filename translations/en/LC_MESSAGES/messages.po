@@ -1,13 +1,13 @@
-# English translations for Wiki Museu do Ipiranga - Onde o objeto é usado?.
+# English translations for Wiki Museu do Ipiranga - Para que serve?.
 # CC-BY-SA 4.0 - Wiki Movimento Brasil
-# This file is distributed under the same license as the Wiki Museu do Ipiranga - Onde o objeto é usado? project.
+# This file is distributed under the same license as the Wiki Museu do
+# Ipiranga - Para que serve? project.
 # Éder Porto <eder.porto@wmnobrasil.org>, 2021.
-
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.0\n"
+"Project-Id-Version:  1.0\n"
 "Report-Msgid-Bugs-To: eder.porto@wmnobrasil.org\n"
-"POT-Creation-Date: 2021-06-06 01:55-0300\n"
+"POT-Creation-Date: 2021-07-07 14:04-0300\n"
 "PO-Revision-Date: 2021-06-06 01:55-0300\n"
 "Last-Translator: Éder Porto <eder.porto@wmnobrasil.org>\n"
 "Language: en\n"
@@ -29,9 +29,9 @@ msgid ""
 "objetivo de convidar você a atuar no trabalho de investigação e curadoria"
 " das obras e objetos do acervo do Museu do Ipiranga."
 msgstr ""
-"The initiative of the <b>Novo Museu do Ipiranga Project</b> has developed "
-"a series of applications, called <b>Wiki Museu do Ipiranga</b>, with "
-"the aim to invite you to work in the investigation and curation work of the "
+"The initiative of the <b>Novo Museu do Ipiranga Project</b> has developed"
+" a series of applications, called <b>Wiki Museu do Ipiranga</b>, with the"
+" aim to invite you to work in the investigation and curation work of the "
 "items and objects from the Ipiranga Museum collection."
 
 #: templates/apps.html:31 templates/apps.html:35
@@ -49,18 +49,13 @@ msgstr ""
 #: templates/apps.html:44
 msgid ""
 "Por exemplo, quantos cordeiros estão retratados no quadro <a "
-"target=\"_blank\" href=\"https://www.wikidata.org/Q52303216\"><i>Mulher "
-"na Janela Alimentando Cordeiros, Menino Sentado numa Banqueta</i></a>, de"
-" <a target=\"_blank\" "
-"href=\"https://pt.wikipedia.org/Adrien_Henri_Vital_van_Emelen\">Adrien "
-"Henri Vital van Emelen</a>?"
+"target=\"_blank\" "
+"href=\"https://wikiquantos.toolforge.org/qid/Q52303216/pt\"><i>Mulher na "
+"Janela Alimentando Cordeiros, Menino Sentado numa Banqueta</i></a>, de <a"
+" target=\"_blank\" "
+"href=\"https://wikiquantos.toolforge.org/criador/Q5474348\">Adrien Henri "
+"Vital van Emelen</a>?"
 msgstr ""
-"For example, how many lambs are depicted in the painting <a "
-"target=\"_blank\" href=\"https://www.wikidata.org/Q52303216\"><i>Mulher "
-"na Janela Alimentando Cordeiros, Menino Sentado numa Banqueta</i></a>, by"
-" <a target=\"_blank\" "
-"href=\"https://en.wikipedia.org/Adrien_Henri_Vital_van_Emelen\">Adrien "
-"Henri Vital van Emelen</a>?"
 
 #: templates/apps.html:55 templates/apps.html:59
 msgid "Logotipo Wiki Museu do Ipiranga - Com que roupa eu vou?"
@@ -80,15 +75,13 @@ msgstr ""
 msgid ""
 "Por exemplo, quais acessórios são usados por Dona Jessy de Souza Queiroz "
 "em seu <a target=\"_blank\" "
-"href=\"https://www.wikidata.org/Q52302832\"><i>retrato</i></a> por <a "
-"target=\"_blank\" href=\"https://pt.wikipedia.org/Karl_Ernst_Papf\">Karl "
-"Ernst Papf</a>?"
+"href=\"https://wikiroupas.toolforge.org/item/Q52302832\"><i>retrato por "
+"Karl Ernst Papf</i></a>?"
 msgstr ""
 "For example, what accessories are used by Dona Jessy de Souza Queiroz in "
 "her <a target=\"_blank\" "
-"href=\"https://www.wikidata.org/Q52302832\"><i>portrait</i></a> by <a "
-"target=\"_blank\" href=\"https://en.wikipedia.org/Karl_Ernst_Papf\">Karl "
-"Ernst Papf</a>?"
+"href=\"https://wikiroupas.toolforge.org/item/Q52302832\"><i>portrait by "
+"Karl Ernst Papf</i></a>?"
 
 #: templates/apps.html:79 templates/apps.html:83
 msgid "Logotipo Wiki Museu do Ipiranga - Qual a marca?"
@@ -104,11 +97,12 @@ msgstr ""
 
 #: templates/apps.html:92
 msgid ""
-"Por exemplo, qual a marca do brinquedo <a target=\"_blank\" "
-"href=\"https://www.wikidata.org/Q65033132\"><i>Trem de luxo Nº2</i></a>?"
+"Por exemplo, qual a marca do <a target=\"_blank\" "
+"href=\"https://wikimarcas.toolforge.org/colecao/brinquedos\"><i>brinquedo</a>"
+" <a target=\"_blank\" "
+"href=\"https://wikimarcas.toolforge.org/item/Q65033132\"><i>Trem de luxo "
+"Nº2</i></a>?"
 msgstr ""
-"For example, which is the brand of the toy <a target=\"_blank\" "
-"href=\"https://www.wikidata.org/Q65033132\"><i>Trem de luxo Nº2</i></a>?"
 
 #: templates/apps.html:103 templates/apps.html:107
 msgid "Logotipo Wiki Museu do Ipiranga - Qual o ornamento?"
@@ -116,49 +110,68 @@ msgstr "Logo of Wiki Museu do Ipiranga - What is the ornament?"
 
 #: templates/apps.html:115
 msgid ""
-"<b>Qual o ornamento?</b> te convida a identificar os motivos "
+"<b>Qual o ornamento?</b> te convida a identificar os ornamentos "
 "representados em objetos do acervo do Museu do Ipiranga."
 msgstr ""
-"<b>What is the ornament?</b> invites you to identify the motifs "
+"<b>What is the ornament?</b> invites you to identify the ornaments "
 "represented in objects from the Ipiranga Museum collection."
 
 #: templates/apps.html:116
 msgid ""
 "Por exemplo, qual tipo de flor está representada numa <a "
-"target=\"_blank\" href=\"https://www.wikidata.org/Q106210419\"><i>sopeira"
-" com tampa</i></a> produzida pelas <a target=\"_blank\" "
-"href=\"https://pt.wikipedia.org/Indústrias_Reunidas_Fábricas_Matarazzo\">Indústrias"
-" Reunidas Fábricas Matarazzo</a>?"
+"target=\"_blank\" "
+"href=\"https://wikimotivos.toolforge.org/item/Q106210419\"><i>sopeira com"
+" tampa</i> produzida pelas Indústrias Reunidas Fábricas Matarazzo</a>?"
 msgstr ""
 "For example, what type of flower is represented in a <a target=\"_blank\""
-" href=\"https://www.wikidata.org/Q106210419\"><i>tureen with lid</i></a> "
-"produced by <a target=\"_blank\" "
-"href=\"https://pt.wikipedia.org/Indústrias_Reunidas_Fábricas_Matarazzo\">Indústrias"
-" Reunidas Fábricas Matarazzo</a>?"
+" href=\"https://wikimotivos.toolforge.org/item/Q106210419\"><i>tureen "
+"with lid</i> produced by the Indústrias Reunidas Fábricas Matarazzo</a>?"
 
 #: templates/apps.html:127 templates/apps.html:131 templates/base.html:39
 #: templates/base.html:41
-msgid "Logotipo Wiki Museu do Ipiranga - Onde o objeto é usado?"
-msgstr "Logo of Wiki Museu do Ipiranga - Where the object is used?"
+msgid "Logotipo Wiki Museu do Ipiranga - Para que serve?"
+msgstr "Logo of Wiki Museu do Ipiranga - What is it for?"
 
 #: templates/apps.html:139
 msgid ""
-"<b>Onde o objeto é usado?</b> te convida a fotografar e descrever o uso "
-"de objetos do acervo do Museu do Ipiranga que você possua um exemplar em "
-"casa."
+"<b>Para que serve?</b> te convida a fotografar e descrever o uso de "
+"objetos semelhantes aos encontrados no acervo do Museu do Ipiranga que "
+"você possua em casa."
 msgstr ""
-"<b>Where is the object used?</b> invites you to photograph and describe the use "
-"of objects from the Ipiranga Museum collection that you have a copy in your house."
+"<b>What is it for?</b> invites you to photograph and describe the use of "
+"objects similar to those found in the collection of the Ipiranga Museum "
+"that you have at home."
 
 #: templates/apps.html:140
 msgid ""
-"Por exemplo, você pode possuir um exemplar <a target=\"_blank\" "
-"href=\"https://www.wikidata.org/wiki/Q106210419\"><i>desta "
-"sopeira</i></a> na sala da sua casa. Com que propósito você a utiliza?"
+"Por exemplo, você tem um <a target=\"_blank\" "
+"href=\"https://wikiusos.toolforge.org/item/Q65033097\"><i>ralador de "
+"queijo</i> como este</a> na cozinha da sua casa? Você o utiliza somente "
+"para ralar queijo? Ou o usa como peça decorativa? Ele tem alguma história"
+" especial?"
 msgstr ""
-"For example, you may have a copy <a target=\"_blank\" "
-"href=\"https://www.wikidata.org/wiki/Q106210419\"><i>of this "
-"bowl</i></a> in your living room. For what purpose do you use it?"
+
+#: templates/apps.html:151 templates/apps.html:155
+msgid "Logotipo Wiki Museu do Ipiranga - O que há no brasão?"
+msgstr "Logo of Wiki Museu do Ipiranga - What is in the coat of arms?"
+
+#: templates/apps.html:163
+msgid ""
+"<b>O que há no brasão?</b> te convida a identificar os elementos "
+"heráldicos dos brasões retratados em obras e objetos do acervo do Museu "
+"do Ipiranga."
+msgstr ""
+"<b>What is in the coat of arms?</b> invites you to identify the heraldic "
+"elements of the coats of arms depicted in works and objects in the "
+"Ipiranga Museum collection."
+
+#: templates/apps.html:164
+msgid ""
+"Por exemplo, você consegue identificar todos os elementos presentes <a "
+"target=\"_blank\" "
+"href=\"https://wikibrasoes.toolforge.org/item/Q55851804\"><i>nesta "
+"pintura de brasão de José Wasth Rodrigues</i></a>?"
+msgstr ""
 
 #: templates/base.html:20 templates/colecao.html:21 templates/inicio.html:9
 #: templates/topnavbar.html:2
@@ -166,8 +179,8 @@ msgid "Página inicial"
 msgstr "Homepage"
 
 #: templates/base.html:20
-msgid "Wiki Museu do Ipiranga - Onde o objeto é usado?"
-msgstr "Wiki Museu do Ipiranga - Where is the object used?"
+msgid "Wiki Museu do Ipiranga - Para que serve?"
+msgstr "Wiki Museu do Ipiranga - What is it for?"
 
 #: templates/base.html:50
 msgid "Projeto Novo Museu do Ipiranga"
@@ -176,19 +189,19 @@ msgstr "Novo Museu do Ipiranga Project"
 #: templates/base.html:51
 #, python-format
 msgid ""
-"<i>Wiki Museu do Ipiranga - Onde o objeto é usado?</i> é um aplicativo "
+"<i>Wiki Museu do Ipiranga - Para que serve?</i> é um aplicativo "
 "desenvolvido no contexto do <i><b>%(projeto)s</b></i>, organizado pelo "
 "<b>Grupo de Usuários Wiki Movimento Brasil</b> e o <b>Museu do "
 "Ipiranga</b>, em parceria com a <b>Fundação Banco do Brasil</b> e com "
 "realização da <b>Universidade de São Paulo</b> e da <b>Fundação de Apoio "
 "à Universidade de São Paulo</b>."
 msgstr ""
-"<i>Wiki Museu do Ipiranga - Where is the object used?</i> is an application "
+"<i>Wiki Museu do Ipiranga - What is it for?</i> is an application "
 "developed in the context of <i><b>%(projeto)s</b></i>, organized by the "
-"<b>User Group Wiki Movimento Brasil</b> and the <b>Museu do "
-"Ipiranga</b>, in partnership with the <b>Banco do Brasil Foundation</b> "
-"and organized by the <b>University of São Paulo</b> and the <b>University "
-"of São Paulo Support Foundation</b>."
+"<b>User Group Wiki Movimento Brasil</b> and the <b>Museu do Ipiranga</b>,"
+" in partnership with the <b>Banco do Brasil Foundation</b> and organized "
+"by the <b>University of São Paulo</b> and the <b>University of São Paulo "
+"Support Foundation</b>."
 
 #: templates/colecao.html:18
 #, python-format
@@ -223,16 +236,16 @@ msgid "Logotipo Wiki Museu do Ipiranga"
 msgstr "Logo of Wiki Museu do Ipiranga"
 
 #: templates/inicio.html:26
-msgid "Bem-vindo(a) ao <i>Wiki Museu do Ipiranga - Onde o objeto é usado?</i>"
-msgstr "Welcome to the <i>Wiki Museu do Ipiranga - Where is the object used?</i>"
+msgid "Bem-vindo(a) ao <i>Wiki Museu do Ipiranga - Para que serve?</i>"
+msgstr "Welcome to the <i>Wiki Museu do Ipiranga - What is it for?</i>"
 
 #: templates/inicio.html:29
 msgid ""
 "Neste aplicativo, você participa do trabalho de pesquisa do Museu do "
 "Ipiranga. Sua tarefa: "
 msgstr ""
-"In this application, you participate in the research work of the Ipiranga "
-"Museum. Your task: "
+"In this application, you participate in the research work of the Ipiranga"
+" Museum. Your task: "
 
 #: templates/inicio.html:29
 msgid ""
@@ -263,16 +276,16 @@ msgid "Brinquedos"
 msgstr "Toys"
 
 #: templates/inicio.html:65
-msgid "Cozinha"
-msgstr "Kitchen"
+msgid "Alimentação"
+msgstr "Food"
 
 #: templates/inicio.html:74
 msgid "Mobiliário"
 msgstr "Furniture"
 
 #: templates/inicio.html:81
-msgid "Decoração"
-msgstr "Decoration"
+msgid "Ornamentos"
+msgstr "Ornaments"
 
 #: templates/inicio.html:90
 msgid "Vasos"
@@ -315,8 +328,8 @@ msgid ""
 "Faça a sua autenticação clicando no botão 'Autenticar-se' no canto "
 "superior direito"
 msgstr ""
-"Authenticate yourself by clicking on the 'Login' button in the "
-"upper right corner"
+"Authenticate yourself by clicking on the 'Login' button in the upper "
+"right corner"
 
 #: templates/item.html:69
 msgid "Objeto"
@@ -367,8 +380,8 @@ msgid ""
 "Caso você possua um exemplar do mesmo objeto, adicione imagens e descreva"
 " onde ele é usado."
 msgstr ""
-"If you have a copy of the same object, add images and describe "
-"where it is used."
+"If you have a copy of the same object, add images and describe where it "
+"is used."
 
 #: templates/item.html:186 templates/item.html:217
 msgid "Enviar imagens"
@@ -389,8 +402,8 @@ msgid ""
 " o formulário abaixo, anexe uma fotografia do seu exemplar do objeto e "
 "envie."
 msgstr ""
-"If you have a copy of the same object as <i>%(label)s</i>, fill in "
-"the form below, attach a photograph of your copy of the object and send."
+"If you have a copy of the same object as <i>%(label)s</i>, fill in the "
+"form below, attach a photograph of your copy of the object and send."
 
 #: templates/item.html:235
 msgid "Usuário(a)"
@@ -411,8 +424,8 @@ msgid ""
 "href='https://commons.wikimedia.org/wiki/Commons:Licensing/pt-"
 "br'>aqui</a>."
 msgstr ""
-"Choose the free license you want to upload your photograph. Read more"
-"about licenses <a target='_blank' "
+"Choose the free license you want to upload your photograph. Read "
+"moreabout licenses <a target='_blank' "
 "href='https://commons.wikimedia.org/wiki/Commons:Licensing/en'>here</a>."
 
 #: templates/item.html:275
@@ -463,13 +476,13 @@ msgstr "About"
 
 #: templates/sobre.html:16
 msgid ""
-"Você está pronto para ser um(a) investigador(a) de acervos? É o que o "
-"aplicativo <b>Wiki Museu do Ipiranga - Onde o objeto é usado?</b> te "
-"oferece: desenvolver suas aptidões de investigação e conhecer mais a "
-"fundo o acervo do Museu do Ipiranga."
+"Você está pronto(a) para ser um(a) investigador(a) de acervos? É o que o "
+"aplicativo <b>Wiki Museu do Ipiranga - Para que serve?</b> te oferece: "
+"desenvolver suas aptidões de investigação e conhecer mais a fundo o "
+"acervo do Museu do Ipiranga."
 msgstr ""
 "Are you ready to be a collection researcher? This is what the <b>Wiki "
-"Museu do Ipiranga - Where is the object used?</b> app offers you: develop your "
+"Museu do Ipiranga - What is it for?</b> app offers you: develop your "
 "research skills and learn more about the Ipiranga Museum collection."
 
 #: templates/sobre.html:17
@@ -477,26 +490,25 @@ msgid ""
 "A curadoria de acervo é uma das atividades mais importantes do museu. "
 "Nela, pesquisadoras e pesquisadores -- e agora você! -- se debruçam sobre"
 " os objetos da coleção para identificar sua procedência, o que retrata, a"
-" história da peça. No aplicativo <b>Wiki Museu do Ipiranga - Onde o "
-"objeto é usado?</b>, você participa desse trabalho de curadoria, "
-"fotografando e descrevendo os usos de seus exemplares de objetos do "
-"acervo do Museu do Ipiranga."
+" história da peça. No aplicativo <b>Wiki Museu do Ipiranga - Para que "
+"serve?</b>, você participa desse trabalho de curadoria, fotografando e "
+"descrevendo os usos de objetos que possui em casa semelhantes aos objetos"
+" do acervo do Museu do Ipiranga."
 msgstr ""
 "Curating the collection is one of the most important activities of the "
 "museum. Here, researchers -- and now you! -- look at the objects in the "
 "collection to identify their origin, what they portray, the history of "
-"the piece. In the application <b>Wiki Museu do Ipiranga - Where is the "
-"object used?</b>, you participate in this curatorial work, photographing "
-" and describing the uses of your copies of the  objects at the Museu "
-"do Ipiranga collection."
+"the piece. In the application <b>Wiki Museu do Ipiranga - What is it "
+"for?</b>, you participate in this curatorial work, photographing and "
+"describing the uses of object you have in your home that are similar to "
+"the ones from the Ipiranga Museum collection."
 
 #: templates/sobre.html:18
 msgid ""
 "O trabalho é sério! Suas edições são interativas e automaticamente "
 "registradas. Elas aparecem num grande documento, uma base de dados, em "
 "que pouco a pouco as informações sobre o acervo do Museu do Ipiranga são "
-"melhoradas. Você é agora tem o poder de ajudar -- que responsabilidade, "
-"né?"
+"melhoradas. Você agora tem o poder de ajudar -- que responsabilidade, né?"
 msgstr ""
 "The work is serious! Your edits are interactive and automatically "
 "recorded. They appear in a large document, a database, in which the "
