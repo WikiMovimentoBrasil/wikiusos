@@ -93,6 +93,15 @@ def get_locale():
     return session.get('lang', 'pt')
 
 
+@app.route('/static/queries.json')
+def check_user_static():
+    username = get_username()
+    if username not in app.config['SUPERUSERS']:
+        return gettext(u"Você não tem permissão de acessar este arquivo.")
+    else:
+        return redirect(os.path.join(app.static_folder, 'queries.json'))
+
+
 # Função para mudar a língua de exibição do conteúdo
 @app.route('/set_locale')
 def set_locale():

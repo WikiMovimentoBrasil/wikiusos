@@ -78,8 +78,7 @@
                             {% for elem in metadata.instancia %}
                                 {% set elem_parts = elem.split('@') %}
                                 <a tabindex="0" target="_blank"
-                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>
-                                {{ ";" if not loop.last }}
+                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>{{ ";" if not loop.last }}
                             {% endfor %}
                         </td>
                     </tr>
@@ -91,8 +90,7 @@
                             {% for elem in metadata.colecao %}
                                 {% set elem_parts = elem.split('@') %}
                                 <a tabindex="0" target="_blank"
-                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>
-                                {{ ";" if not loop.last }}
+                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>{{ ";" if not loop.last }}
                             {% endfor %}
                         </td>
                     </tr>
@@ -122,8 +120,7 @@
                             {% for elem in metadata.criador %}
                                 {% set elem_parts = elem.split('@') %}
                                 <a tabindex="0" target="_blank"
-                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>
-                                {{ ";" if not loop.last }}
+                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>{{ ";" if not loop.last }}
                             {% endfor %}
                         </td>
                     </tr>
@@ -135,8 +132,7 @@
                             {% for elem in metadata.material %}
                                 {% set elem_parts = elem.split('@') %}
                                 <a tabindex="0" target="_blank"
-                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>
-                                {{ ";" if not loop.last }}
+                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>{{";" if not loop.last }}
                             {% endfor %}
                         </td>
                     </tr>
@@ -159,8 +155,7 @@
                             {% for elem in metadata.metodo %}
                                 {% set elem_parts = elem.split('@') %}
                                 <a tabindex="0" target="_blank"
-                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>
-                                {{ ";" if not loop.last }}
+                                   href="https://www.wikidata.org/wiki/{{ elem_parts[0] }}">{{ elem_parts[1] }}</a>{{ ";" if not loop.last }}
                             {% endfor %}
                         </td>
                     </tr>
@@ -186,7 +181,7 @@
                     <a class="button" title="{{ _('Enviar imagens') }}">
                         <button type="button" class="button" data-toggle="modal"
                                 data-qid="{{ metadata.obra_qid[0] }}" data-target="#sendModal"
-                                style="background-color:#008000;margin: 0; width:100%">{{ _("ADICIONAR") }}</button>
+                                style="background-color:#008000; color:white; margin: 0; width:100%">{{ _("ADICIONAR") }}</button>
                     </a>
                 </div>
             {% endif %}
@@ -214,13 +209,14 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3 class="modal-title">{{ _("Enviar imagens") }}</h3>
+                            <h3 class="modal-title">{{ _("Enviar imagem") }}</h3>
                             <button type="button" class="close" data-dismiss="modal" style="font-size:125%; ">&times;
                             </button>
                         </div>
                         <div class="modal-body">
                             <p style="font-size: 115%">
-                                {{ _("Se você possui um exemplar do mesmo objeto que <i>%(label)s</i>, preencha o formulário abaixo, anexe uma fotografia do seu exemplar do objeto e envie.",label=metadata.obra_label[0]) }}
+                                {{ _("Se você possui um objeto semelhante a <i>%(label)s</i>, fotografe-o no contexto em que é utilizado e preencha o formulário abaixo.",label=metadata.obra_label[0]) }}<br><br>
+                                <small>&#9432; {{ _("<b>Atenção:</b> Os dados inseridos por você neste formulário serão coletados e utilizados pelas equipes de pesquisa do Museu do Ipiranga. Para garantir totalmente sua privacidade, evite insirir dados pessoais.") }}</small>
                             </p>
                             <div class="w3-container"
                                  style="overflow: hidden; font-size: 115%; width: 100%; overflow-wrap: break-word; padding:0.1em">
@@ -280,26 +276,53 @@
                                     </div>
                                     <div class="w3-container w3-row" style="padding:0.1em">
                                         <div class="w3-container w3-quarter"
-                                             style="padding:0;font-weight: bold">{{ _("Título da imagem") }}
+                                             style="padding:0;font-weight: bold">{{ _("Legende a sua imagem") }}
                                             <a href="#" style="font-size: 60%" data-toggle="popover"
                                                data-trigger="focus"
-                                               data-content="{{ _("Título da imagem. Evite termos genéricos ou nomes ilegíveis por humanos") }}">&#9432;</a>
+                                               data-content="{{ _("Limite de 250 caracteres. Evite termos genéricos ou nomes ilegíveis por humanos") }}">&#9432;</a>
                                         </div>
                                         <div class="w3-container w3-threequarter" style="padding:0">
-                                            <input name="title" type="text" style="width:100%;" required>
+                                            <input name="title" maxlength="250" placeholder="e.g., {{ metadata.imagem[0].rsplit('.', 1)[0] }}" type="text" style="width:100%;" required>
                                         </div>
                                     </div>
-                                    <div class="w3-container w3-row"
-                                         style="padding:0.1em; background-color: rgba(0,0,0,.05)">
-                                        <div class="w3-container w3-quarter"
-                                             style="padding:0;font-weight: bold">{{ _("Descrição da imagem") }}
-                                            <a href="#" style="font-size: 60%" data-toggle="popover"
-                                               data-trigger="focus"
-                                               data-content="{{ _("Descreva onde e como o objeto é usado") }}">&#9432;</a>
+                                    <div class="w3-container w3-row" style="padding:0.1em; background-color: rgba(0,0,0,.05)">
+                                        <div class="w3-container" style="padding:0;font-weight: bold; text-align: center">
+                                            {{ _("Em quais ambientes da casa você usa o objeto?") }}
                                         </div>
-                                        <div class="w3-container w3-threequarter" style="padding:0">
-                                            <textarea name="description" rows="5" style="width:100%;"
-                                                      required></textarea>
+                                        <div class="w3-container " style="padding:0">
+                                            <textarea name="ambiente_de_uso" rows="5" style="width:100%;" placeholder="{{ _('e.g., Sala de jantar') }}"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="w3-container w3-row" style="padding:0.1em;">
+                                        <div class="w3-container" style="padding:0;font-weight: bold; text-align: center">
+                                            {{ _("Em quais locais dos ambientes você usa o objeto?") }}
+                                        </div>
+                                        <div class="w3-container" style="padding:0">
+                                            <textarea name="local_ambiente" rows="5" style="width:100%;" placeholder="{{ _('e.g., Parede') }}"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="w3-container w3-row" style="padding:0.1em; background-color: rgba(0,0,0,.05)">
+                                        <div class="w3-container" style="padding:0;font-weight: bold; text-align: center">
+                                            {{ _("Para que serve este objeto?") }}
+                                        </div>
+                                        <div class="w3-container" style="padding:0">
+                                            <textarea name="pra_que_serve" rows="5" style="width:100%;" placeholder="{{ _('e.g., Uso como decoração na parede.') }}"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="w3-container w3-row" style="padding:0.1em;">
+                                        <div class="w3-container" style="padding:0;font-weight: bold; text-align: center">
+                                            {{ _("Como você obteve esse objeto?") }}
+                                        </div>
+                                        <div class="w3-container" style="padding:0">
+                                            <textarea name="como_obteve" rows="5" style="width:100%;" placeholder="{{ _('e.g., Ganhei de presente de uma amiga.') }}"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="w3-container w3-row" style="padding:0.1em; background-color: rgba(0,0,0,.05)">
+                                        <div class="w3-container" style="padding:0;font-weight: bold; text-align: center">
+                                            {{ _("Este objeto tem alguma história especial?") }}
+                                        </div>
+                                        <div class="w3-container" style="padding:0">
+                                            <textarea name="história_especial" rows="5" style="width:100%;" placeholder="{{ _('e.g., Foi o primeiro presente recebido na casa nova!') }}"></textarea>
                                         </div>
                                     </div>
                                     <div class="w3-container w3-row" style="padding:0.1em">
