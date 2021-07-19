@@ -93,11 +93,13 @@ def build_text(form, username):
             "|date="+form["date"]+"\n"
             "|source={{own}}\n"
             "|author=[[User:"+username+"|"+username+"]]\n"
+            "|other fields = {{Information field|Similar to the Museu do Ipiranga object|{{Q|"+form["qid"]+"}}}}\n"
             "}}\n\n"
             "=={{int:license-header}}==\n"
             "{{Wikiusos}}\n"
             "{{"+get_license(form["license"])+"}}\n\n"
-            "[[Category:Uploaded with wikiusos|"+form["qid"]+"]]")
+            "[[Category:Uploaded with wikiusos|"+form["qid"]+"]]"
+            )
     return text
 
 

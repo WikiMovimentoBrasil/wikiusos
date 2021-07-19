@@ -8,6 +8,7 @@ from flask_babel import Babel, gettext
 from wikidata import query_quantidade, query_by_type, query_metadata_of_work, query_next_qid, api_category_members
 from oauth_wiki import get_username, get_token, upload_file
 from requests_oauthlib import OAuth1Session
+from datetime import datetime
 
 __dir__ = os.path.dirname(__file__)
 app = Flask(__name__)
@@ -91,15 +92,6 @@ def get_locale():
     if request.args.get('lang'):
         session['lang'] = request.args.get('lang')
     return session.get('lang', 'pt')
-
-
-@app.route('/static/queries.json')
-def check_user_static():
-    username = get_username()
-    if username not in app.config['SUPERUSERS']:
-        return gettext(u"Você não tem permissão de acessar este arquivo.")
-    else:
-        return redirect(os.path.join(app.static_folder, 'queries.json'))
 
 
 # Função para mudar a língua de exibição do conteúdo
@@ -260,6 +252,14 @@ def send_file():
         uploaded_file = request.files['file']
         form = request.form
         filename = uploaded_file.filename
+
+        # Registrar respostas
+        try:
+            register_possible_sensitive_answers(form)
+        except:
+            pass
+
+        # Enviar imagem
         data = upload_file(uploaded_file, filename, form, username)
         if "error" in data and data["error"]["code"] == "fileexists-shared-forbidden":
             message = gettext(u"Uma imagem com este exato título já existe. Por favor, reformule o título.")
@@ -279,6 +279,52 @@ def send_file():
             message = gettext(
                 u"Imagem enviada com sucesso! Verifique suas contribuições clicando em seu nome de usuário(a).")
     return jsonify(message)
+
+
+@app.route('/static/dados.json')
+def check_user_static():
+    username = get_username()
+    if username not in app.config['SUPERUSERS']:
+        return gettext(u"Você não tem permissão de acessar este arquivo.")
+    else:
+        return redirect(os.path.join(app.static_folder, 'dados.json'))
+
+
+def register_possible_sensitive_answers(form):
+    ambiente_, local_, utilidade_, obtencao_, historia_, image = "", "", "", "", "", ""
+    username = get_username()
+    today = datetime.today().strftime('%Y-%m-%dT%H:%M:%S')
+
+    if "title" in form and request.files['file']:
+        image = form["title"] + os.path.splitext(request.files['file'].filename)[1]
+
+    if "ambiente_de_uso" in form:
+        ambiente_ = form["ambiente_de_uso"]
+    if "local_ambiente" in form:
+        local_ = form["local_ambiente"]
+    if "para_que_serve" in form:
+        utilidade_ = form["para_que_serve"]
+    if "como_obteve" in form:
+        obtencao_ = form["como_obteve"]
+    if "história_especial" in form:
+        historia_ = form["história_especial"]
+
+    with open(os.path.join(app.static_folder, 'dados.json'), encoding="utf-8") as file:
+        values = json.load(file)
+
+    if "respostas" in values and values["respostas"]:
+        values["respostas"].append({
+            "Username": username,
+            "Timestamp": today,
+            "Image": image,
+            "Ambiente_de_uso": ambiente_,
+            "Local_ambiente": local_,
+            "Para_que_serve": utilidade_,
+            "Como_obteve": obtencao_,
+            "História_especial": historia_
+        })
+    with open(os.path.join(app.static_folder, 'dados.json'), 'w', encoding="utf-8") as file:
+        json.dump(values, file, ensure_ascii=False)
 
 
 ##############################################################
