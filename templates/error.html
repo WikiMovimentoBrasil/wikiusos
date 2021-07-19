@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block navbar %}
+    {% with lang=lang, username=username %}
+        {% include 'topnavbar.html' %}
+    {% endwith %}
+{% endblock %}
+
 {% block title %}{{ _("Algo deu errado!") }}{% endblock %}
 
 {% block content %}
@@ -27,7 +33,7 @@
                  style="text-align:center; font-family: 'Josefin Sans', sans-serif; font-size:150%">
                 <a tabindex="0" href="{{ url_for('inicio') }}">
                     <button type="button" class="button" id="goback"
-                            style="background-color:#FFBB00;width:90%;margin:0;font-size:100%;color:black">
+                            style="background-color:#F37F1A;width:90%;margin:0;font-size:100%;color:black">
                         {{ _("VOLTAR À PÁGINA INICIAL") }}
                     </button>
                 </a>
