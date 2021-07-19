@@ -260,24 +260,27 @@ def send_file():
             pass
 
         # Enviar imagem
-        data = upload_file(uploaded_file, filename, form, username)
-        if "error" in data and data["error"]["code"] == "fileexists-shared-forbidden":
-            message = gettext(u"Uma imagem com este exato título já existe. Por favor, reformule o título.")
-        elif "upload" in data and "warnings" in data["upload"] and "duplicate" in data["upload"]["warnings"]:
-            message = gettext(
-                u"Esta imagem é uma duplicata exata da imagem https://commons.wikimedia.org/wiki/File:%(file_)s",
-                file_=data["upload"]["warnings"]["duplicate"][0])
-        elif "upload" in data and "warnings" in data["upload"] and "duplicate-archive" in data["upload"]["warnings"]:
-            message = gettext(u"Esta imagem é uma duplicata exata de uma outra imagem que foi deletada da base.")
-        elif "upload" in data and "warnings" in data["upload"] and "was-deleted" in data["upload"]["warnings"]:
-            message = gettext(u"Uma outra imagem costumava utilizar este mesmo título. Por favor, reformule o título.")
-        elif "upload" in data and "warnings" in data["upload"] and "exists" in data["upload"]["warnings"]:
-            message = gettext(u"Uma imagem com este exato título já existe. Por favor, reformule o título.")
-        elif "error" in data:
-            message = data["error"]["code"]
+        if username:
+            data = upload_file(uploaded_file, filename, form, username)
+            if "error" in data and data["error"]["code"] == "fileexists-shared-forbidden":
+                message = gettext(u"Uma imagem com este exato título já existe. Por favor, reformule o título.")
+            elif "upload" in data and "warnings" in data["upload"] and "duplicate" in data["upload"]["warnings"]:
+                message = gettext(
+                    u"Esta imagem é uma duplicata exata da imagem https://commons.wikimedia.org/wiki/File:%(file_)s",
+                    file_=data["upload"]["warnings"]["duplicate"][0])
+            elif "upload" in data and "warnings" in data["upload"] and "duplicate-archive" in data["upload"]["warnings"]:
+                message = gettext(u"Esta imagem é uma duplicata exata de uma outra imagem que foi deletada da base.")
+            elif "upload" in data and "warnings" in data["upload"] and "was-deleted" in data["upload"]["warnings"]:
+                message = gettext(u"Uma outra imagem costumava utilizar este mesmo título. Por favor, reformule o título.")
+            elif "upload" in data and "warnings" in data["upload"] and "exists" in data["upload"]["warnings"]:
+                message = gettext(u"Uma imagem com este exato título já existe. Por favor, reformule o título.")
+            elif "error" in data:
+                message = data["error"]["code"]
+            else:
+                message = gettext(
+                    u"Imagem enviada com sucesso! Verifique suas contribuições clicando em seu nome de usuário(a).")
         else:
-            message = gettext(
-                u"Imagem enviada com sucesso! Verifique suas contribuições clicando em seu nome de usuário(a).")
+            message = gettext(u'Ocorreu algum erro! Verifique o formulário e tente novamente. Caso o erro persista, por favor, reporte em https://github.com/WikiMovimentoBrasil/wikiusos/issues')
     return jsonify(message)
 
 
@@ -309,22 +312,24 @@ def register_possible_sensitive_answers(form):
     if "história_especial" in form:
         historia_ = form["história_especial"]
 
-    with open(os.path.join(app.static_folder, 'dados.json'), encoding="utf-8") as file:
-        values = json.load(file)
+    if username:
+        with open(os.path.join(app.static_folder, 'dados.json'), encoding="utf-8") as file:
+            values = json.load(file)
 
-    if "respostas" in values and values["respostas"]:
-        values["respostas"].append({
-            "Username": username,
-            "Timestamp": today,
-            "Image": image,
-            "Ambiente_de_uso": ambiente_,
-            "Local_ambiente": local_,
-            "Para_que_serve": utilidade_,
-            "Como_obteve": obtencao_,
-            "História_especial": historia_
-        })
-    with open(os.path.join(app.static_folder, 'dados.json'), 'w', encoding="utf-8") as file:
-        json.dump(values, file, ensure_ascii=False)
+        if "respostas" in values:
+            val = {
+                "Username": username,
+                "Timestamp": today,
+                "Image": image,
+                "Ambiente_de_uso": ambiente_,
+                "Local_ambiente": local_,
+                "Para_que_serve": utilidade_,
+                "Como_obteve": obtencao_,
+                "História_especial": historia_
+            }
+            values["respostas"].append(val)
+        with open(os.path.join(app.static_folder, 'dados.json'), 'w', encoding="utf-8") as file:
+            json.dump(values, file, ensure_ascii=False)
 
 
 ##############################################################
