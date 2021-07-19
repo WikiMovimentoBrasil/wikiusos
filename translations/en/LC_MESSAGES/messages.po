@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  1.0\n"
 "Report-Msgid-Bugs-To: eder.porto@wmnobrasil.org\n"
-"POT-Creation-Date: 2021-07-07 14:04-0300\n"
+"POT-Creation-Date: 2021-07-19 16:01-0300\n"
 "PO-Revision-Date: 2021-06-06 01:55-0300\n"
 "Last-Translator: Éder Porto <eder.porto@wmnobrasil.org>\n"
 "Language: en\n"
@@ -56,6 +56,13 @@ msgid ""
 "href=\"https://wikiquantos.toolforge.org/criador/Q5474348\">Adrien Henri "
 "Vital van Emelen</a>?"
 msgstr ""
+"For example, how many lambs are depicted in the painting <a "
+"target=\"_blank\" "
+"href=\"https://wikiquantos.toolforge.org/qid/Q52303216/pt\"><i>Mulher na "
+"Janela Alimentando Cordeiros, Menino Sentado numa Banqueta</i></a>, by <a"
+" target=\"_blank\" "
+"href=\"hhttps://wikiquantos.toolforge.org/criador/Q5474348\">Adrien Henri"
+" Vital van Emelen</a>?"
 
 #: templates/apps.html:55 templates/apps.html:59
 msgid "Logotipo Wiki Museu do Ipiranga - Com que roupa eu vou?"
@@ -103,6 +110,11 @@ msgid ""
 "href=\"https://wikimarcas.toolforge.org/item/Q65033132\"><i>Trem de luxo "
 "Nº2</i></a>?"
 msgstr ""
+"For example, which is the brand of the <a target=\"_blank\" "
+"href=\"https://wikimarcas.toolforge.org/colecao/brinquedos\"><i>toy</a> "
+"<a target=\"_blank\" "
+"href=\"https://wikimarcas.toolforge.org/item/Q65033132\"><i>Trem de luxo "
+"Nº2</i></a>?"
 
 #: templates/apps.html:103 templates/apps.html:107
 msgid "Logotipo Wiki Museu do Ipiranga - Qual o ornamento?"
@@ -150,6 +162,11 @@ msgid ""
 "para ralar queijo? Ou o usa como peça decorativa? Ele tem alguma história"
 " especial?"
 msgstr ""
+"For example, do you have a <a target=\"_blank\" "
+"href=\"https://wikiusos.toolforge.org/item/Q65033097\"><i>cheese "
+"grater</i> like this</a> in your kitchen at home. Do you only use it for "
+"grating cheese? Or do you use it as a decorative piece? Does it have a "
+"special story?"
 
 #: templates/apps.html:151 templates/apps.html:155
 msgid "Logotipo Wiki Museu do Ipiranga - O que há no brasão?"
@@ -172,6 +189,10 @@ msgid ""
 "href=\"https://wikibrasoes.toolforge.org/item/Q55851804\"><i>nesta "
 "pintura de brasão de José Wasth Rodrigues</i></a>?"
 msgstr ""
+"For example, can you identify all the elements present <a "
+"target=\"_blank\" "
+"href=\"https://wikibrasoes.toolforge.org/item/Q55851804\"><i>in this coat"
+" of arms painting by José Wasth Rodrigues</i></a>?"
 
 #: templates/base.html:20 templates/colecao.html:21 templates/inicio.html:9
 #: templates/topnavbar.html:2
@@ -227,7 +248,7 @@ msgstr "Something went wrong!"
 msgid "REPORTAR ERRO"
 msgstr "REPORT ERROR"
 
-#: templates/error.html:31 templates/item.html:197
+#: templates/error.html:31 templates/item.html:192
 msgid "VOLTAR À PÁGINA INICIAL"
 msgstr "GO TO HOMEPAGE"
 
@@ -339,43 +360,43 @@ msgstr "Object"
 msgid "Instância de"
 msgstr "Instance of"
 
-#: templates/item.html:89
+#: templates/item.html:88
 msgid "Coleção"
 msgstr "Collection"
 
-#: templates/item.html:102
+#: templates/item.html:100
 msgid "Número de inventário"
 msgstr "Inventory number"
 
-#: templates/item.html:112 templates/item.html:272
+#: templates/item.html:110 templates/item.html:268
 msgid "Data"
 msgstr "Date"
 
-#: templates/item.html:120
+#: templates/item.html:118
 msgid "Criador(a)"
 msgstr "Creator"
 
-#: templates/item.html:133
+#: templates/item.html:130
 msgid "Material"
 msgstr "Material"
 
-#: templates/item.html:146
+#: templates/item.html:142
 msgid "Dimensões"
 msgstr "Dimensions"
 
-#: templates/item.html:157
+#: templates/item.html:153
 msgid "Método de fabricação"
 msgstr "Fabrication method"
 
-#: templates/item.html:170
+#: templates/item.html:165
 msgid "Versão audível"
 msgstr "Audible version"
 
-#: templates/item.html:175
+#: templates/item.html:170
 msgid "Seu navegador não suporta este elemento de áudio"
 msgstr "Your browser does not support this audio element"
 
-#: templates/item.html:184
+#: templates/item.html:179
 msgid ""
 "Caso você possua um exemplar do mesmo objeto, adicione imagens e descreva"
 " onde ele é usado."
@@ -383,41 +404,54 @@ msgstr ""
 "If you have a copy of the same object, add images and describe where it "
 "is used."
 
-#: templates/item.html:186 templates/item.html:217
+#: templates/item.html:181
 msgid "Enviar imagens"
 msgstr "Send images"
 
-#: templates/item.html:189
+#: templates/item.html:184
 msgid "ADICIONAR"
 msgstr "ADD"
 
-#: templates/item.html:205
+#: templates/item.html:200
 msgid "PULAR ESTE ITEM"
 msgstr "SKIP THIS ITEM"
 
-#: templates/item.html:223
+#: templates/item.html:212 templates/item.html:346
+msgid "Enviar imagem"
+msgstr "Send image"
+
+#: templates/item.html:218
 #, python-format
 msgid ""
-"Se você possui um exemplar do mesmo objeto que <i>%(label)s</i>, preencha"
-" o formulário abaixo, anexe uma fotografia do seu exemplar do objeto e "
-"envie."
+"Se você possui um objeto semelhante a <i>%(label)s</i>, fotografe-o no "
+"contexto em que é utilizado e preencha o formulário abaixo."
 msgstr ""
-"If you have a copy of the same object as <i>%(label)s</i>, fill in the "
-"form below, attach a photograph of your copy of the object and send."
+"If you have an object similar to <i>%(label)s</i>, take a picture of it in "
+"the context it is used and fill the form below."
 
-#: templates/item.html:235
+#: templates/item.html:219
+msgid ""
+"<b>Atenção:</b> Os dados inseridos por você neste formulário serão "
+"coletados e utilizados pelas equipes de pesquisa do Museu do Ipiranga. "
+"Para garantir totalmente sua privacidade, evite insirir dados pessoais."
+msgstr ""
+"<b>Atention:</b> The data entered by you in this form will be collected "
+"and used by the research teams of the Ipiranga Museum."
+"To fully guarantee your privacy, please avoid entering personal data."
+
+#: templates/item.html:231
 msgid "Usuário(a)"
 msgstr "User"
 
-#: templates/item.html:238
+#: templates/item.html:234
 msgid "Seu nome de usuário(a)"
 msgstr "Your username"
 
-#: templates/item.html:251
+#: templates/item.html:247
 msgid "Licença"
 msgstr "License"
 
-#: templates/item.html:254
+#: templates/item.html:250
 msgid ""
 "Escolha a licença livre que deseja carregar sua fotografia. Leia mais "
 "sobre as licenças <a target='_blank' "
@@ -428,39 +462,74 @@ msgstr ""
 "moreabout licenses <a target='_blank' "
 "href='https://commons.wikimedia.org/wiki/Commons:Licensing/en'>here</a>."
 
-#: templates/item.html:275
+#: templates/item.html:271
 msgid "Data em que a fotografia foi tirada"
 msgstr "Date the photo was taken"
 
-#: templates/item.html:283
-msgid "Título da imagem"
-msgstr "Image title"
+#: templates/item.html:279
+msgid "Legende a sua imagem"
+msgstr "Caption your image"
 
-#: templates/item.html:286
-msgid "Título da imagem. Evite termos genéricos ou nomes ilegíveis por humanos"
-msgstr "Title of the image. Avoid generic terms or human-unreadable names"
+#: templates/item.html:282
+msgid ""
+"Limite de 250 caracteres. Evite termos genéricos ou nomes ilegíveis por "
+"humanos"
+msgstr ""
+"250 character limit. Avoid generic terms or human-unreadable names"
 
-#: templates/item.html:295
-msgid "Descrição da imagem"
-msgstr "Image description"
+#: templates/item.html:290
+msgid "Em quais ambientes da casa você usa o objeto?"
+msgstr "In which areas of the house do you use the object?"
 
-#: templates/item.html:298 templates/item.html:310
-msgid "Descreva onde e como o objeto é usado"
-msgstr "Describe where and how the object is used"
+#: templates/item.html:293
+msgid "e.g., Sala de jantar"
+msgstr "e.g., Dining room"
 
-#: templates/item.html:307
+#: templates/item.html:298
+msgid "Em quais locais dos ambientes você usa o objeto?"
+msgstr "Where in the environments do you use the object?"
+
+#: templates/item.html:301
+msgid "e.g., Parede"
+msgstr "e.g., Wall"
+
+#: templates/item.html:306
+msgid "Para que serve este objeto?"
+msgstr "What is this object for?"
+
+#: templates/item.html:309
+msgid "e.g., Uso como decoração na parede."
+msgstr "e.g., I use as wall decoration."
+
+#: templates/item.html:314
+msgid "Como você obteve esse objeto?"
+msgstr "How did you get this object?"
+
+#: templates/item.html:317
+msgid "e.g., Ganhei de presente de uma amiga."
+msgstr "e.g., I got it as a gift from a friend."
+
+#: templates/item.html:322
+msgid "Este objeto tem alguma história especial?"
+msgstr "Does this object have any special history?"
+
+#: templates/item.html:325
+msgid "e.g., Foi o primeiro presente recebido na casa nova!"
+msgstr "e.g., It was the first gift received in the new house!"
+
+#: templates/item.html:330
 msgid "Arquivo"
 msgstr "File"
 
-#: templates/item.html:321
+#: templates/item.html:333
+msgid "Descreva onde e como o objeto é usado"
+msgstr "Describe where and how the object is used"
+
+#: templates/item.html:344
 msgid "Cancelar"
 msgstr "Cancel"
 
-#: templates/item.html:323
-msgid "Enviar imagem"
-msgstr "Send image"
-
-#: templates/item.html:338
+#: templates/item.html:361
 msgid ""
 "Ocorreu algum erro! Verifique o formulário e tente novamente. Caso o erro"
 " persista, por favor, reporte em "
@@ -598,4 +667,3 @@ msgstr "Menu"
 #: templates/tutorial.html:9
 msgid "Tutorial"
 msgstr "Tutorial"
-
