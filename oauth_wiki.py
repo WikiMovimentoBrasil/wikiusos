@@ -1,6 +1,7 @@
 from flask import current_app, session
 from requests_oauthlib import OAuth1Session
 from urllib.parse import urlencode
+from flask_babel import gettext
 
 project = "https://commons.wikimedia.org/w/api.php?"
 
@@ -87,9 +88,14 @@ def upload_file(file, filename, form, username):
 
 
 def build_text(form, username):
+    descr = gettext(u"Imagem contribuída através do aplicativo ''Wiki Museu do Ipiranga - Para que serve?''")
+
+    if "para_que_serve" in form and form["para_que_serve"]:
+        descr = form["para_que_serve"]
+
     text = ("=={{int:filedesc}}==\n"
             "{{Information\n"
-            "|description={{"+form["lang"]+"|1="+form["description"]+"}}\n"
+            "|description={{"+form["lang"]+"|1="+descr+"}}\n"
             "|date="+form["date"]+"\n"
             "|source={{own}}\n"
             "|author=[[User:"+username+"|"+username+"]]\n"
