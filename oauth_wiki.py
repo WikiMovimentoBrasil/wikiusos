@@ -91,7 +91,7 @@ def build_text(form, username):
     descr = gettext(u"Imagem contribuída através do aplicativo ''Wiki Museu do Ipiranga - Para que serve?''")
 
     if "para_que_serve" in form and form["para_que_serve"]:
-        descr = form["para_que_serve"]
+        descr = descr + " Para que serve: \"" + form["para_que_serve"] + "\""
 
     text = ("=={{int:filedesc}}==\n"
             "{{Information\n"
@@ -99,7 +99,7 @@ def build_text(form, username):
             "|date="+form["date"]+"\n"
             "|source={{own}}\n"
             "|author=[[User:"+username+"|"+username+"]]\n"
-            "|other fields = {{Information field|Similar to the Museu do Ipiranga object|{{Q|"+form["qid"]+"}}}}\n"
+            "|other fields = {{Wikiusos/Information field|qid = "+form["qid"]+"}}\n"
             "}}\n\n"
             "=={{int:license-header}}==\n"
             "{{Wikiusos}}\n"
